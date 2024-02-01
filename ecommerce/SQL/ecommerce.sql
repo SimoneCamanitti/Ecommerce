@@ -18,6 +18,34 @@ CREATE TABLE if NOT EXISTS Prodotti(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	Nome VARCHAR(50),
 	quantita INT,
-	id_opzioni INT FOREIGN KEY,
+	prezzo FLOAT,
+	id_opzioni INT,
 	FOREIGN KEY (id_opzioni) REFERENCES opzioni (id) 
 );
+
+CREATE TABLE if NOT EXISTS opzioni_prodotti(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	id_opzione INT,
+	id_prodotto INT,
+	FOREIGN KEY (id_opzione) REFERENCES opzioni (id),
+	FOREIGN KEY (id_prodotto) REFERENCES prodotti (id) 
+);
+
+CREATE TABLE if NOT EXISTS carrelli(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_utente INT,
+	FOREIGN KEY (id_utente) REFERENCES utenti (id)
+);
+
+CREATE TABLE if NOT EXISTS carrello_opzioni(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	id_carrello INT,
+	id_utente INT,
+	id_opzione INT,
+	FOREIGN KEY (id_carrello) REFERENCES carrelli (id),
+	FOREIGN KEY (id_utente) REFERENCES utenti (id),
+	FOREIGN KEY (id_opzione) REFERENCES opzioni_prodotti (id_opzione)
+);
+
+
+

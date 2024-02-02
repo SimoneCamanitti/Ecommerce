@@ -18,7 +18,7 @@ $account = "user";
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // Esegui la query INSERT INTO per inserire i dati nel database
-$sql = "INSERT INTO users (username, password, account_type) VALUES (?, ?, '$account')";
+$sql = "INSERT INTO Utenti (username, password, account_type) VALUES (?, ?, '$account')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('ss', $username, $hashedPassword);
 

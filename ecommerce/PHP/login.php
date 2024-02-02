@@ -3,7 +3,7 @@ session_start();
 
 include "connessione.php";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($hostname, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
@@ -29,22 +29,22 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['username'] = $username;
             $_SESSION['account_type'] = $user['account_type'];
             //indirizzo alla pagina che mi interessa.
-            header('Location: welcome.php');
+            header('Location: ../HTML/Home.php');
             exit();
         } else {
             // password  non corretta, reindirizza alla pagina di login
-            header('Location: index.php?error=1');
+            header('Location: ../Index.html');
             exit();
         }
     } else {
         // Utente non trovato, reindirizza alla pagina di login
-        header('Location: index.php?error=2');
+        header('Location: ../Index.html');
         exit();
     }
 } else {
     // Se i campi non sono stati inviati, reindirizza alla pagina di login. 
     // In realtà il Form di Login richiede l'obbligo di inserire entrambi i campi quindi questa parte potrebbe essere omessa
-    header('Location: index.php');
+    header('Location: ../Index.html');
     exit();
 }
 

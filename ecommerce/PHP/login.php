@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = trim($_POST['username']);
 
     // Esecuzione di una query preparata per evitare SQL injection
-    $sql = "SELECT * FROM users WHERE username = ?";
+    $sql = "SELECT * FROM utenti WHERE Email = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
@@ -29,22 +29,22 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['username'] = $username;
             $_SESSION['account_type'] = $user['account_type'];
             //indirizzo alla pagina che mi interessa.
-            header('Location: ../HTML/Home.php');
+            header('Location: Home.php');
             exit();
         } else {
             // password  non corretta, reindirizza alla pagina di login
-            header('Location: ../Index.html');
+            header('Location: Index.html?error=1');
             exit();
         }
     } else {
         // Utente non trovato, reindirizza alla pagina di login
-        header('Location: ../Index.html');
+        header('Location: Index.html?error=2');
         exit();
     }
 } else {
     // Se i campi non sono stati inviati, reindirizza alla pagina di login. 
     // In realtà il Form di Login richiede l'obbligo di inserire entrambi i campi quindi questa parte potrebbe essere omessa
-    header('Location: ../Index.html');
+    header('Location: Index.html');
     exit();
 }
 

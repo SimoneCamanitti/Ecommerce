@@ -24,16 +24,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $user = $result->fetch_assoc();
 
         // Verifica delle password utilizzando la funzione password_verify
-        if (password_verify(trim($_POST['password']), trim($user['password']))) {
+        if (password_verify(trim($_POST['password']), trim($user['password_utente']))) {
             // Credenziali corrette, impostare variabili di sessione
             $_SESSION['username'] = $username;
-            $_SESSION['account_type'] = $user['account_type'];
+            $_SESSION['account_type'] = $user['tipo'];
             //indirizzo alla pagina che mi interessa.
-            header('Location: Home.php');
+            header('Location: ../HTML/Home.html');
             exit();
         } else {
             // password  non corretta, reindirizza alla pagina di login
-            header('Location: Index.html?error=1');
+            header('Location: ../Index.html');
             exit();
         }
     } else {

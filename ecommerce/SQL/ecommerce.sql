@@ -4,7 +4,7 @@ USE ecommerce;
 CREATE TABLE if NOT EXISTS Utenti(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	Email VARCHAR(255) NOT NULL,
-	password_utente VARCHAR(16) NOT NULL,
+	password_utente VARCHAR(255) NOT NULL,
 	tipo INT
 );
 

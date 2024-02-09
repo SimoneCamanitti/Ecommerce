@@ -6,4 +6,5 @@ INSERT INTO categorie (Nome) VALUES
 	("Illuminazione"),
 	("Giardino"),
 	("Cucina"),
-	("Bagno");
+	("Bagno"),
+	("Camera");

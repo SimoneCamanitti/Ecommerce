@@ -29,7 +29,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['username'] = $username;
             $_SESSION['account_type'] = $user['tipo'];
             //indirizzo alla pagina che mi interessa.
-            header('Location: ../HTML/Home.html');
+            header('Location: Home.php');
             exit();
         } else {
             // password  non corretta, reindirizza alla pagina di login

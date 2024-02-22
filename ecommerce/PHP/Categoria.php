@@ -1,3 +1,11 @@
+<?php 
+    $id=$_POST["Categoria"];
+    include "connessione.php";
+   $conn = new mysqli($hostname, $username, $password, $dbname);
+   if ($conn->connect_error) {
+       die('Connection failed: ' . $conn->connect_error);
+   }
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
    <head>
@@ -98,7 +106,6 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
     <link href="../CSS/product.css" rel="stylesheet">
   </head>
   <body>
@@ -169,117 +176,24 @@
 </nav>
 
 <main>
-  <!-- <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-    <div class="col-md-6 p-lg-5 mx-auto my-5">
-      <h1 class="display-3 fw-bold">Designed for engineers</h1>
-      <h3 class="fw-normal text-muted mb-3">Build anything you want with Aperture</h3>
-      <div class="d-flex gap-3 justify-content-center lead fw-normal">
-        <a class="icon-link" href="#">
-          Learn more
-          <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-        </a>
-        <a class="icon-link" href="#">
-          Buy
-          <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-  </div> -->
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Divani</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Cucina.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      
-    </div>
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Sedie</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Cucina.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      <!-- <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Armadi</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Armadi.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      <!-- <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Letti</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Letti.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      <!-- <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Illuminazione</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Illuminazione.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      <!-- <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Giardino</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Giardino.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      <!-- <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Cucina</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Cucina.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-      <!-- <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Bagno</h2>
-        <p class="lead"></p>
-        <form action="../PHP/Bagno.php" method="post">
-          <button type="submit" class="btn btn-light">Vai</button>
-        </form>
-      </div>
-
-      <!-- <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-    </div>
-  </div>
+      <?php
+        $query="SELECT id,Nome,quantita,prezzo FROM prodotti WHERE id_categoria=".$id.";";
+        $res=$conn->query($query);
+        while ($row=mysqli_fetch_array($res)){
+        echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
+        <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
+          <div class='my-3 py-3'>
+            <h2 class='display-5'>".$row["Nome"]."</h2>
+            <p class='lead'>Quantità: ".$row["quantita"]."</p>
+            <p class='lead'>Prezzo: ".$row["prezzo"]."</p>
+            <form action='Prodotto.php' method='post'>
+              <button type='submit' class='btn btn-light' value='".$row["id"]."' name='Prodotto'>Vai</button>
+            </form>
+          </div>
+        </div>
+        </div>";}
+      ?>
+ 
 </main>
 
 <footer class="container py-5">

@@ -177,7 +177,7 @@
 
 <main>
       <?php
-        $query="SELECT Nome,quantita,prezzo FROM prodotti WHERE id=".$id.";";
+        $query="SELECT Nome,quantita,prezzo FROM prodotti WHERE id=".$id."AND id_opzioni=id";
         $res=$conn->query($query);
         while ($row=mysqli_fetch_array($res)){
         echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>

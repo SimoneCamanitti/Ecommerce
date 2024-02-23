@@ -165,8 +165,11 @@
           <li class="nav-item"><a class="nav-link" href="#">Enterprise</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">
-            <svg class="bi" width="24" height="24"><use xlink:href="#cart"/></svg>
+          <li class="nav-item"><a class="nav-link" href="PHP/Carrello.php">
+            <svg class="bi" width="24" height="24">
+              <use xlink:href="#cart"/>
+              
+            </svg>
           </a></li>
         </ul>
       </div>
@@ -183,7 +186,7 @@
         <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
           <div class='my-3 py-3'>
             <h2 class='display-5'>".$row["Nome"]."</h2>
-            <img src='".$row["immagine"]."'>
+            <img style='widht=200px; height=200px;' src='".$row["immagine"]."'>
             <form action='Categoria.php' method='post'>
               <button type='submit' class='btn btn-light' value='".$row["id"]."' name='Categoria'>Vai</button>
             </form>

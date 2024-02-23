@@ -8,4 +8,5 @@ INSERT INTO categorie (Nome,immagine) VALUES
 	("Giardino"," IMAGES/Giardino.jpeg"),
 	("Cucina"," IMAGES/cucina.jpg"),
 	("Bagno"," IMAGES/Bagno.jpeg"),
-	("Camera"," IMAGES/Camera.jpeg");
+	("Camera"," IMAGES/Camera.jpeg"),
+	("Opzioni","IMAGES/Opzioni.jpeg");

@@ -177,17 +177,21 @@
 
 <main>
       <?php
-        $query="SELECT p.Nome,p.quantita,p.prezzo,s.Nome FROM prodotti WHERE p.id=".$id."AND (p.id_opzioni=s.id OR p.id_opzioni is null);";
+        $query="SELECT p.Nome AS nome_prodotto,p.quantita AS quantita,p.prezzo AS prezzo,s.Nome AS nome_opzione,s.quantita AS opzione_quantita,s.prezzo AS opzione_prezzo FROM prodotti p  INNER JOIN prodotti s ON p.id_opzioni=s.id Where p.id=".$id.";";
         $res=$conn->query($query);
         while ($row=mysqli_fetch_array($res)){
         echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
         <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
           <div class='my-3 py-3'>
-            <h2 class='display-5'>".$row["Nome"]."</h2>
+            <h2 class='display-5'>".$row["nome_prodotto"]."</h2>
             <p class='lead'>Quantità: ".$row["quantita"]."</p>
             <p class='lead'>Prezzo: ".$row["prezzo"]."</p>
-            <form action='Prodotto.php' method='post'>
-              <button type='submit' class='btn btn-light'>Acquista</button>
+            <h2 class='display-5'> Opzione </h2>
+            <p class='lead'>Nome: ".$row["nome_opzione"]."</p>
+            <p class='lead'>Quantità: ".$row["opzione_quantita"]."</p>
+            <p class='lead'>Prezzo: ".$row["opzione_prezzo"]."</p>
+            <form action='Aggiungi.php' method='post'>
+              <button type='submit' class='btn btn-light' value='".$id."' name='id'>Acquista</button>
             </form>
           </div>
         </div>

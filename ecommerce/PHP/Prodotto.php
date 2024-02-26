@@ -157,7 +157,7 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 justify-content-between">
-          <li class="nav-item"><a class="nav-link" href="#">
+          <li class="nav-item"><a class="nav-link" href="../Home.php">
             <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
           </a></li>
           <li class="nav-item"><a class="nav-link" href="#">Tour</a></li>
@@ -177,7 +177,7 @@
 
 <main>
       <?php
-        $query="SELECT Nome,quantita,prezzo FROM prodotti WHERE id=".$id."AND id_opzioni=id";
+        $query="SELECT p.Nome,p.quantita,p.prezzo,s.Nome FROM prodotti WHERE p.id=".$id."AND (p.id_opzioni=s.id OR p.id_opzioni is null);";
         $res=$conn->query($query);
         while ($row=mysqli_fetch_array($res)){
         echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>

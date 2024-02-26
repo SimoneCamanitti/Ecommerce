@@ -157,7 +157,7 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav flex-grow-1 justify-content-between">
-          <li class="nav-item"><a class="nav-link" href="#">
+          <li class="nav-item"><a class="nav-link" href="../Home.php">
             <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
           </a></li>
           <li class="nav-item"><a class="nav-link" href="#">Tour</a></li>

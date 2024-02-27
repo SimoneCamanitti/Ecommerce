@@ -36,7 +36,9 @@ CREATE TABLE if NOT EXISTS carrelli(
 CREATE TABLE if NOT EXISTS ordini(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	Nome VARCHAR(50),
-	prezzo FLOAT
+	prezzo FLOAT,
+	id_carrello INT,
+	FOREIGN KEY (id_carrello) REFERENCES carrelli (id)
 );
 
 CREATE TABLE if NOT EXISTS ordini_carrelli(

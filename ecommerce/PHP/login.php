@@ -26,8 +26,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         // Verifica delle password utilizzando la funzione password_verify
         if (password_verify(trim($_POST['password']), trim($user['password_utente']))) {
             // Credenziali corrette, impostare variabili di sessione
-            $_SESSION['username'] = $username;
-            $_SESSION['account_type'] = $user['tipo'];
+            $_SESSION["username"] = $username;
+            $_SESSION["account_type"] = $user['tipo'];
+            $_SESSION["conferma"]=true;
             //indirizzo alla pagina che mi interessa.
             header('Location: Home.php');
             exit();
@@ -44,7 +45,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 } else {
     // Se i campi non sono stati inviati, reindirizza alla pagina di login. 
     // In realtà il Form di Login richiede l'obbligo di inserire entrambi i campi quindi questa parte potrebbe essere omessa
-    header('Location: Index.html');
+    header('Location: ../PHP/Home.php');
     exit();
 }
 

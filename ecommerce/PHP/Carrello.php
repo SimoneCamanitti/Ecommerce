@@ -200,9 +200,14 @@
         </div>";}
         echo "</div>";
         $_SESSION["Prezzo_tot"]=$prezzo_totale; 
-        echo "<form action='Ordine.php' method='post'>
+        echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
+        <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
+        <form action='Ordine.php' method='post'>
         <button type='submit' class='btn btn-light' value='".$id."' name='id'>Ordina</button>
-        </form>"
+        </form>
+        <form action='../Home.php' method='post'>
+        <button type='submit' class='btn btn-light'>Torna a fare acquisti</button>
+        </form></div></div>";
       ?>
  
 </main>

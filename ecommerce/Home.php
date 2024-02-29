@@ -186,7 +186,7 @@
         <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
           <div class='my-3 py-3'>
             <h2 class='display-5'>".$row["Nome"]."</h2>
-            <img style='widht=200px; height=200px;' src='".$row["immagine"]."'>
+            <img style='max-widht=50%; max-height=70%;' src='".$row["immagine"]."'>
             <form action='PHP/Categoria.php' method='post'>
               <button type='submit' class='btn btn-light' value='".$row["id"]."' name='Categoria'>Vai</button>
             </form>

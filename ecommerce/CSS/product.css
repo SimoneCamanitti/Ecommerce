@@ -7,7 +7,10 @@
   width: .75em;
   height: .75em;
 }
-
+ img{
+  max-width: 100px;
+  max-height: 100px;
+ }
 /*
  * Custom translucent site header
  */

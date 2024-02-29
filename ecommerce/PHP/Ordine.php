@@ -1,10 +1,12 @@
 <?php 
     session_start();
+    $id=$_POST["id"];
     include "connessione.php";
     $conn = new mysqli($hostname, $username, $password, $dbname);
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     }
+    
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
@@ -177,32 +179,28 @@
 
 <main>
       <?php
-        $prezzo_totale=0;
-            $query="SELECT c.id AS id,id_prodotto,p.Nome AS nome_prodotto,p.quantita AS quantita,p.prezzo AS prezzo,s.Nome AS nome_opzione,s.quantita AS opzione_quantita,s.prezzo AS opzione_prezzo FROM carrelli c INNER JOIN prodotti p ON c.id_prodotto=p.id INNER JOIN prodotti s ON p.id_opzioni=s.id; ";
-            $res=$conn->query($query);
-        echo "<div class='my-3 py-3'>
-        <h2 class='display-5'>Carrello</h2>";
+        $query="INSERT INTO ordini (prezzo,id_carrello) VALUES (".$_SESSION["Prezzo_tot"].",".$id.");";
+        $conn->query($query);
+        $query="SELECT o.prezzo AS prezzo_tot,id_carrello,id_prodotto,p.Nome AS nome_prodotto,p.quantita AS quantita,p.prezzo AS prezzo,s.Nome AS nome_opzione,s.quantita AS opzione_quantita,s.prezzo AS opzione_prezzo FROM ordini o INNER JOIN carrelli  ON o.id_carrello=carrelli.id INNER JOIN prodotti p ON carrelli.id_prodotto=p.id INNER JOIN prodotti s ON p.id_opzioni=s.id;";
+        $res=$conn->query($query);
+        $prezzo_tot=0;
         while ($row=mysqli_fetch_array($res)){
-          $id=$row["id"];
-          $prezzo_totale+=$row["prezzo"];
+        $prezzo_tot=$row["prezzo_tot"];
         echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
         <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
           <div class='my-3 py-3'>
             <h2 class='display-5'>".$row["nome_prodotto"]."</h2>
-            <p class='lead'>Quantità: ".$row["quantita"]."</p>
-            <p class='lead'>Prezzo: ".$row["prezzo"]."</p>
             <h2 class='display-5'> Opzione </h2>
             <p class='lead'>Nome: ".$row["nome_opzione"]."</p>
-            <p class='lead'>Quantità: ".$row["opzione_quantita"]."</p>
-            <p class='lead'>Prezzo: ".$row["opzione_prezzo"]."</p>
           </div>
         </div>
         </div>";}
-        echo "</div>";
-        $_SESSION["Prezzo_tot"]=$prezzo_totale; 
-        echo "<form action='Ordine.php' method='post'>
-        <button type='submit' class='btn btn-light' value='".$id."' name='id'>Ordina</button>
-        </form>"
+        echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
+        <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
+        <p class='lead'>Prezzo totale: ".$prezzo_tot."</p>
+        <form action='../Home.php' method='post'>
+        <button type='submit' class='btn btn-light'>Torna ad acquistare</button>
+        </form></div></div>";
       ?>
  
 </main>

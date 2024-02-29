@@ -30,11 +30,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION["account_type"] = $user['tipo'];
             $_SESSION["conferma"]=true;
             //indirizzo alla pagina che mi interessa.
-            header('Location: Home.php');
+            header('Location: ../ecommerce/Home.php');
             exit();
         } else {
             // password  non corretta, reindirizza alla pagina di login
-            header('Location: ../Index.html');
+            header('Location: ../HTML/Index.html');
             exit();
         }
     } else {
@@ -45,7 +45,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 } else {
     // Se i campi non sono stati inviati, reindirizza alla pagina di login. 
     // In realtà il Form di Login richiede l'obbligo di inserire entrambi i campi quindi questa parte potrebbe essere omessa
-    header('Location: ../PHP/Home.php');
+    header('Location: ../ecommerce/Home.php');
     exit();
 }
 

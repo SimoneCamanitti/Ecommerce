@@ -14,7 +14,7 @@ if ($conn->connect_error) {
         $res=$conn->query($query);
         $id_utente=mysqli_fetch_array($res)["id"];
         $query="INSERT INTO carrelli (id_utente,id_prodotto) VALUES (".$id_utente.",".$id.");";
-        $res=$conn->query($query);
+        $conn->query($query);
         header('Location: Carrello.php');
     }
     }else{

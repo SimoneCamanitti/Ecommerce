@@ -2,7 +2,7 @@
     include "connessione.php";
     session_start();
     $id=$_POST["id"];
-
+    $_SESSION["quantita"]=$_POST["quantita"];
     $conn = new mysqli($hostname, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);

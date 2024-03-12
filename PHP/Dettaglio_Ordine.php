@@ -1,4 +1,5 @@
-<?php 
+
+        <?php 
     include "connessione.php";
     $conn = new mysqli($hostname, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -177,7 +178,7 @@
 
 <main>
       <?php
-        $query="SELECT p.Nome AS nome_prodotto,p.quantita AS quantita,p.prezzo AS prezzo,s.Nome AS nome_opzione,s.quantita AS opzione_quantita,s.prezzo AS opzione_prezzo FROM prodotti p  INNER JOIN prodotti s ON p.id_opzioni=s.id Where p.id=".$id.";";
+        $query="SELECT d.id_Ordine,d.id_Prodotto,p.Nome AS nome_prodotto,AS prezzo,s.Nome AS nome_opzione,s.prezzo AS opzione_prezzo FROM dettaglioordine d  INNER JOIN prodotti p ON d.id_Prodotto=p.id INNER JOIN prodotti s ON p.id_opzioni=s.id;";
         $res=$conn->query($query);
         while ($row=mysqli_fetch_array($res)){
         echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
@@ -191,6 +192,7 @@
             <p class='lead'>Quantità: ".$row["opzione_quantita"]."</p>
             <p class='lead'>Prezzo: ".$row["opzione_prezzo"]."</p>
             <form action='Aggiungi.php' method='post'>
+              <input type='number' name='quantita'>
               <button type='submit' class='btn btn-light' value='".$id."' name='id'>Acquista</button>
             </form>
           </div>

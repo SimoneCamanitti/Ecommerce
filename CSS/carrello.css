@@ -1,0 +1,57 @@
+/* Stile generale del carrello */
+#carrello {
+    background-color: #333333;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  /* Stile dell'elenco degli articoli nel carrello */
+  .carrello-articoli {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Stile di un singolo articolo nel carrello */
+  .articolo {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #555555;
+    padding: 10px 0;
+  }
+  
+  .articolo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .articolo .dettagli {
+    flex: 1;
+  }
+  
+  /* Stile del pulsante Rimuovi articolo */
+  .rimuovi {
+    background-color: transparent;
+    border: none;
+    color: #ff3333;
+    cursor: pointer;
+  }
+  
+  .rimuovi:hover {
+    text-decoration: underline;
+  }
+  
+  /* Stile del totale del carrello */
+  .totale {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .totale span {
+    font-weight: bold;
+  }
+  

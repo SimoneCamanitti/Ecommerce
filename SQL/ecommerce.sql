@@ -35,7 +35,18 @@ CREATE TABLE if NOT EXISTS carrelli(
 
 CREATE TABLE if NOT EXISTS ordini(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	prezzo FLOAT,
-	id_carrello INT,
-	FOREIGN KEY (id_carrello) REFERENCES carrelli (id)
+	data_Ordine DATE,
+	data_Consegna DATE,
+	id_Utente INT,
+	FOREIGN KEY (id_Utente) REFERENCES utenti (id)
+);
+
+CREATE TABLE if NOT EXISTS dettaglioOrdine(
+	id_Ordine INT,
+	id_Prodotto INT,
+	quantita_Ordinata INT,
+	prezzo_Prodotto INT,
+	PRIMARY KEY (`id_Ordine`,`id_Prodotto`),
+  KEY `FK_dettaglioordine_prodotti` (`id_Prodotto`),
+  CONSTRAINT `FK_dettaglioordine_ordini` FOREIGN KEY (`id_Ordine`) REFERENCES `ordini` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );

@@ -1,5 +1,5 @@
 <?php 
-   include "PHP/connessione.php";
+   include "connessione.php";
    $conn = new mysqli($hostname, $username, $password, $dbname);
    if ($conn->connect_error) {
        die('Connection failed: ' . $conn->connect_error);
@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="CSS/bootstrap.min.css" rel="stylesheet">
+<link href="../CSS/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -105,7 +105,7 @@
     </style>
 
     
-    <link href="CSS/product.css" rel="stylesheet">
+    <link href="../CSS/product.css" rel="stylesheet">
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -165,7 +165,7 @@
           <li class="nav-item"><a class="nav-link" href="#">Enterprise</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="PHP/Carrello.php">
+          <li class="nav-item"><a class="nav-link" href="Carrello.php">
             <svg class="bi" width="24" height="24">
               <use xlink:href="#cart"/>
               
@@ -187,7 +187,7 @@
           <div class='my-3 py-3'>
             <h2 class='display-5'>".$row["Nome"]."</h2>
             <img style='max-widht=50%; max-height=70%;' src='".$row["immagine"]."'>
-            <form action='PHP/Categoria.php' method='post'>
+            <form action='Categoria.php' method='post'>
               <button type='submit' class='btn btn-light' value='".$row["id"]."' name='Categoria'>Vai</button>
             </form>
           </div>
@@ -243,7 +243,7 @@
     </div>
   </div>
 </footer>
-<script src="JS/bootstrap.bundle.min.js"></script>
+<script src="../JS/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

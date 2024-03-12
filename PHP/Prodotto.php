@@ -1,10 +1,10 @@
 <?php 
-    session_start();
     include "connessione.php";
     $conn = new mysqli($hostname, $username, $password, $dbname);
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     }
+    $id=$_POST["Prodotto"];
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
@@ -177,14 +177,9 @@
 
 <main>
       <?php
-        $prezzo_totale=0;
-            $query="SELECT c.id AS id,id_prodotto,p.Nome AS nome_prodotto,p.quantita AS quantita,p.prezzo AS prezzo,s.Nome AS nome_opzione,s.quantita AS opzione_quantita,s.prezzo AS opzione_prezzo FROM carrelli c INNER JOIN prodotti p ON c.id_prodotto=p.id INNER JOIN prodotti s ON p.id_opzioni=s.id; ";
-            $res=$conn->query($query);
-        echo "<div class='my-3 py-3'>
-        <h2 class='display-5'>Carrello</h2>";
+        $query="SELECT p.Nome AS nome_prodotto,p.quantita AS quantita,p.prezzo AS prezzo,s.Nome AS nome_opzione,s.quantita AS opzione_quantita,s.prezzo AS opzione_prezzo FROM prodotti p  INNER JOIN prodotti s ON p.id_opzioni=s.id Where p.id=".$id.";";
+        $res=$conn->query($query);
         while ($row=mysqli_fetch_array($res)){
-          $id=$row["id"];
-          $prezzo_totale+=$row["prezzo"];
         echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
         <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
           <div class='my-3 py-3'>
@@ -195,19 +190,13 @@
             <p class='lead'>Nome: ".$row["nome_opzione"]."</p>
             <p class='lead'>Quantità: ".$row["opzione_quantita"]."</p>
             <p class='lead'>Prezzo: ".$row["opzione_prezzo"]."</p>
+            <form action='Aggiungi.php' method='post'>
+              <input type='number' name='quantita'>
+              <button type='submit' class='btn btn-light' value='".$id."' name='id'>Acquista</button>
+            </form>
           </div>
         </div>
         </div>";}
-        echo "</div>";
-        $_SESSION["Prezzo_tot"]=$prezzo_totale; 
-        echo "<div class='d-md-flex flex-md-equal w-100 my-md-3 ps-md-3'>
-        <div class='bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden'>
-        <form action='Ordine.php' method='post'>
-        <button type='submit' class='btn btn-light' value='".$id."' name='id'>Ordina</button>
-        </form>
-        <form action='../Home.php' method='post'>
-        <button type='submit' class='btn btn-light'>Torna a fare acquisti</button>
-        </form></div></div>";
       ?>
  
 </main>

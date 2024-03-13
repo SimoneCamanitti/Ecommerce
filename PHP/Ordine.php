@@ -8,12 +8,13 @@
     }
     
 ?>
-
-
-
-      <?php
-        $query="INSERT INTO ordini (data_Ordine,data_Consegna) VALUES (".date('Y-m-d').",".strtotime(date('Y-m-d') . ' +3 days').");";
-        $conn->query($query);
+  <?php
+  $email=$_SESSION['username'];
+        $query="SELECT id FROM utenti WHERE Email=".$email."; ";
+        $res=$conn->query($query);
+        while ($row=mysqli_fetch_array($res)) {
+        $query="INSERT INTO ordini (data_Ordine,data_Consegna,id_Utente) VALUES (".date('Y-m-d').",".strtotime(date('Y-m-d') . ' +3 days').",".$row['id'].");";
+        $conn->query($query);}
         $query="INSERT INTO dettaglioordine (id_Ordine) SELECT o.id FROM ordini o;";
         $conn->query($query);
         $query="INSERT INTO dettaglioordine (id_Prodotto,prezzo_Prodotto) SELECT prodotti.id,prodotti.prezzo FROM prodotti;";
